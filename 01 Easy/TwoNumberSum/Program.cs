@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TwoNumberSum
 {
@@ -7,21 +8,30 @@ namespace TwoNumberSum
         static void Main(string[] args)
         {
             //int[] nums = new int[] { 3, 2, 4 };
-            int[] nums = new int[] { 3, 5, -4, 8, 11, 1, -1, 6 };
 
+           
+
+            int[] nums = new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 };
             int[] result = new int[2];
+            var tempResult = new Dictionary<int, int>();
+            tempResult.Add(nums[0], 0);
 
-            int target = 10;
+            int target = 11;
 
-            for (int i = 0; i < nums.Length; i++)
+            for (int i = 1; i < nums.Length; i++)
             {
-                for (int j = i + 1; j < nums.Length; j++)
+                int temp = target - nums[i];
+                if(tempResult.ContainsKey(temp))
                 {
-                    if (nums[i] + nums[j] == target)
+                    tempResult.TryGetValue(temp, out result[0]);
+                    result[1] = i;
+                    break;
+                }
+                else
+                {
+                    if(!tempResult.ContainsKey(nums[i]))
                     {
-                        result[0] = i;
-                        result[1] = j;
-                        break;
+                        tempResult.Add(nums[i], i);
                     }
                 }
             }
