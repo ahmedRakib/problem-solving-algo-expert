@@ -8,7 +8,7 @@ namespace ValidateSubsequence
         {
             //int[] nums = new int[] { 5, 1, 22, 25};
             int[] nums = new int[] { 5, 1, 22, 25, 6, -1, 8, 10 };
-            var subSequence = new int[] { 1, 22,5, 6, -1, 8 };
+            var subSequence = new int[] {1, 22, -1, 8 };
             var result = ValidateSubsequence(nums, subSequence);
 
             Console.WriteLine(result.ToString());
@@ -17,28 +17,51 @@ namespace ValidateSubsequence
         private static bool ValidateSubsequence(int[] array, int[] subSequence)
         {
             bool result = false;
-            int indexToStart = 0;
-            for (int i = 0; i < subSequence.Length; i++)
+
+            #region trivial solution using two loops
+            //int indexToStart = 0;
+            //for (int i = 0; i < subSequence.Length; i++)
+            //{
+            //    for(int j = indexToStart; j < array.Length; j++)
+            //    {
+            //        if(subSequence[i] == array[j])
+            //        {
+            //            indexToStart = j;
+            //            result = true;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            result = false;
+            //        }
+            //    }
+
+            //    if(result == false)
+            //    {
+            //        break;
+            //    }
+            //}
+            #endregion
+
+            #region optimal solution using pointer
+           
+            int pointer = 0;
+            for(int i = 0; i < array.Length; i++)
             {
-                for(int j = indexToStart; j < array.Length; j++)
+                if(pointer < subSequence.Length)
                 {
-                    if(subSequence[i] == array[j])
+                    if(subSequence[pointer] == array[i])
                     {
-                        indexToStart = j;
                         result = true;
-                        break;
+                        pointer++;
                     }
                     else
                     {
                         result = false;
                     }
                 }
-
-                if(result == false)
-                {
-                    break;
-                }
             }
+            #endregion
 
             return result;
         }
