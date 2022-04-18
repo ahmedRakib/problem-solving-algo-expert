@@ -63,7 +63,15 @@ namespace ValidateSubsequence
             }
             #endregion
 
-            return result;
+            if (result == true && pointer == subSequence.Length)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
