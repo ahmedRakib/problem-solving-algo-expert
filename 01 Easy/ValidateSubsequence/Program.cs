@@ -8,7 +8,7 @@ namespace ValidateSubsequence
         {
             //int[] nums = new int[] { 5, 1, 22, 25};
             int[] nums = new int[] { 5, 1, 22, 25, 6, -1, 8, 10 };
-            var subSequence = new int[] {1, 22, -1, 8 };
+            var subSequence = new int[] {1, 23, -1, 8 };
             var result = ValidateSubsequence(nums, subSequence);
 
             Console.WriteLine(result.ToString());
@@ -61,7 +61,6 @@ namespace ValidateSubsequence
                     }
                 }
             }
-            #endregion
 
             if (result == true && pointer == subSequence.Length)
             {
@@ -71,6 +70,26 @@ namespace ValidateSubsequence
             {
                 return false;
             }
+            #endregion
+
+
+            #region algo expert solution
+            //int occuranceCounter = 0;
+            //for(int i = 0; i < array.Length; i++)
+            //{
+            //    if(occuranceCounter == subSequence.Length)
+            //    {
+            //        break;
+            //    }
+            //    if(subSequence[occuranceCounter] == array[i])
+            //    {
+            //        occuranceCounter++;
+            //    }
+            //}
+
+            //return occuranceCounter == subSequence.Length;
+
+            #endregion
 
         }
     }
